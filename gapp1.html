@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GAP Customer Service Quick Guide</title>
+<style>
+:root {
+  --navy: #142b4a;
+  --blue: #245da8;
+  --blue-light: #eaf2ff;
+  --ink: #1f2937;
+  --muted: #5b6574;
+  --line: #dce2ea;
+  --paper: #ffffff;
+  --bg: #f4f6f9;
+  --green: #176b4d;
+  --green-bg: #e8f6ef;
+  --gold-bg: #fff7df;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif; line-height: 1.5;
+}
+header {
+  background: var(--navy); color: white; padding: 22px 18px 20px;
+}
+.header-inner { max-width: 1100px; margin: 0 auto; }
+.kicker { font-size: .78rem; text-transform: uppercase; letter-spacing: .12em; opacity: .8; font-weight: 700; }
+h1 { margin: 5px 0 6px; font-size: clamp(1.55rem, 3vw, 2.15rem); line-height: 1.15; }
+header p { margin: 0; max-width: 700px; color: #e6edf8; }
+main { max-width: 1100px; margin: 0 auto; padding: 18px; }
+.toolbar {
+  display: grid; grid-template-columns: minmax(220px, 1fr) auto; gap: 10px;
+  margin-bottom: 12px;
+}
+input[type="search"] {
+  width: 100%; min-width: 0; padding: 14px 15px; border: 1px solid #bac5d3;
+  border-radius: 12px; font: inherit; font-size: 1rem; background: white; color: var(--ink);
+}
+button { font: inherit; cursor: pointer; }
+.clear-btn {
+  border: 1px solid #bac5d3; border-radius: 12px; background: white;
+  color: var(--navy); padding: 10px 14px; font-weight: 700;
+}
+.hint { color: var(--muted); font-size: .9rem; margin: 0 0 16px; }
+.layout { display: grid; grid-template-columns: minmax(260px, 0.88fr) minmax(0, 1.45fr); gap: 16px; align-items: start; }
+.panel { background: var(--paper); border: 1px solid var(--line); border-radius: 15px; overflow: hidden; }
+.panel-head { padding: 14px 16px; border-bottom: 1px solid var(--line); background: #fbfcfe; }
+.panel-head h2 { margin: 0; font-size: 1rem; }
+.count { color: var(--muted); font-size: .86rem; margin-top: 3px; }
+.situation-list { max-height: 68vh; overflow-y: auto; padding: 7px; }
+.situation {
+  display: block; width: 100%; text-align: left; padding: 12px 12px;
+  margin: 2px 0; border: 1px solid transparent; border-radius: 10px;
+  background: white; color: var(--ink); font-weight: 600; line-height: 1.35;
+}
+.situation:hover { background: #f3f7fd; }
+.situation.active { background: var(--blue-light); border-color: #a8c7f7; color: #123f7d; }
+.situation .num { display: inline-block; min-width: 28px; color: var(--muted); font-size: .82rem; font-weight: 700; }
+.detail { padding: 20px; min-height: 340px; }
+.welcome { color: var(--muted); padding: 30px 10px; text-align: center; }
+.welcome .symbol { font-size: 2.3rem; margin-bottom: 8px; }
+.detail h2 { margin: 0 0 18px; font-size: clamp(1.25rem, 2.5vw, 1.65rem); line-height: 1.25; }
+.label { font-size: .78rem; letter-spacing: .06em; font-weight: 800; text-transform: uppercase; margin: 18px 0 7px; }
+.label.spanish { color: #6c5200; }
+.label.script-label { color: var(--green); }
+.explanation {
+  background: var(--gold-bg); border-left: 4px solid #d8ae32; border-radius: 8px;
+  padding: 13px 15px; font-size: 1rem;
+}
+.script-box {
+  background: var(--green-bg); border-left: 4px solid #30966e; border-radius: 8px;
+  padding: 15px; font-size: clamp(1.08rem, 2vw, 1.22rem); line-height: 1.55;
+}
+.actions { display: flex; gap: 9px; flex-wrap: wrap; margin-top: 12px; }
+.action-btn {
+  border: 1px solid #aab8c9; border-radius: 9px; background: white;
+  padding: 9px 12px; color: var(--navy); font-weight: 700;
+}
+.action-btn.primary { background: var(--blue); color: white; border-color: var(--blue); }
+.action-btn:focus-visible, .situation:focus-visible, input:focus-visible { outline: 3px solid #82b4ff; outline-offset: 2px; }
+.empty { padding: 22px 14px; text-align: center; color: var(--muted); }
+.footer-note { margin-top: 15px; color: var(--muted); font-size: .83rem; }
+@media (max-width: 760px) {
+  main { padding: 12px; }
+  .layout { grid-template-columns: 1fr; }
+  .situation-list { max-height: 34vh; }
+  .detail { padding: 16px; min-height: 240px; }
+  .toolbar { grid-template-columns: 1fr; }
+  .clear-btn { justify-self: start; }
+}
+@media print {
+  body { background: white; }
+  header { background: white; color: black; padding: 0 0 12px; }
+  header p { color: black; }
+  .toolbar, .hint, .situation-list, .actions, .footer-note { display: none !important; }
+  main { padding: 0; }
+  .layout { display: block; }
+  .panel { border: 0; }
+  .panel-head { display: none; }
+  .detail { padding: 0; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <div class="kicker">Quick reference · Customer support</div>
+    <h1>GAP Customer Service Quick Guide</h1>
+    <p>Find the customer’s situation, open it, and read a clear explanation or a simple English response during your call.</p>
+  </div>
+</header>
+<main>
+  <div class="toolbar">
+    <input id="search" type="search" placeholder="Search: refund, return, order, gift card…" aria-label="Search customer situations">
+    <button class="clear-btn" id="clear">Clear search</button>
+  </div>
+  <p class="hint">Tip: type a keyword or a few words the customer used. Click a situation to open its details.</p>
+
+  <div class="layout">
+    <section class="panel" aria-label="Customer situations">
+      <div class="panel-head">
+        <h2>Customer situations</h2>
+        <div class="count" id="count">30 situations</div>
+      </div>
+      <div class="situation-list" id="list"></div>
+    </section>
+
+    <section class="panel" aria-live="polite" aria-atomic="true">
+      <div class="panel-head"><h2>Call helper</h2></div>
+      <div class="detail" id="detail">
+        <div class="welcome">
+          <div class="symbol">☏</div>
+          <h2>Choose a situation to get started</h2>
+          <p>The Spanish explanation helps you understand the process. The green section is what you can say to the customer in simple English.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+  <p class="footer-note">Use this as a quick guide. Policies and exceptions can change, so verify the current details on the official GAP website when needed.</p>
+</main>
+<script>
+const cards = [{"situation": "The customer wants to exchange an item for a different size. Explain the process.", "spanish": "Para una compra en línea, guía al cliente por el proceso interactivo de devolución/cambio y confirma que el artículo sea elegible. En un cambio por correo, el artículo original debe enviarse dentro de 14 días para completar el cambio sin cargo adicional. El reemplazo se tramita como una transacción separada. No prometas disponibilidad de talla sin verificarla.", "script": "I can help you exchange it for another size. First, we’ll check whether the item can be exchanged. Then I’ll guide you through the return and exchange steps. Please send the original item back within 14 days to complete a mail exchange."}, {"situation": "The customer wants to return an online purchase by mail. What should they do?", "spanish": "El cliente debe iniciar la devolución en el proceso interactivo de GAP, identificar los artículos elegibles y crear/imprimir la etiqueta. Debe empacar el artículo de forma segura, incluir el comprobante de empaque y colocar la etiqueta correctamente. Las devoluciones por correo son gratis para miembros Encore; para quienes no son miembros se aplica una tarifa de $6 por paquete, descontada del reembolso, según la política consultada.", "script": "You can start your return on our website. Choose the item you want to return and follow the steps. If you choose to mail it back, print the return label, pack the item safely, and attach the label to the package."}, {"situation": "The customer wants to return an online order in a store. Is that possible?", "spanish": "Generalmente sí, excepto artículos marcados “return by mail only”, artículos vendidos por terceros y pedidos hechos por ciertos marketplaces externos o Shopify. La devolución debe hacerse en una tienda de la misma marca de compra; los artículos de GAP no se devuelven en Old Navy, por ejemplo. Confirma siempre las exclusiones aplicables.", "script": "In most cases, yes. You can return an online order at a Gap store, but some items must be returned by mail. The return must be made at the same brand where you bought it. I can help you check whether your item qualifies."}, {"situation": "The customer bought an item in a store and wants to return it by mail.", "spanish": "La política publicada indica que las compras hechas en tienda no se pueden devolver por correo. Explica al cliente que debe revisar las opciones de devolución en tienda de la marca donde compró el artículo.", "script": "Items bought in a store cannot be returned by mail. Please bring the item to a store of the same brand. Bring your receipt if you have it, so the team can help you with the return."}, {"situation": "The customer asks how long they have to return an item.", "spanish": "La política general indica 30 días desde la fecha de entrega para compras en línea, o desde la fecha de compra para compras en tienda. Puede haber excepciones, exclusiones o ventanas extendidas para ciertos miembros Encore; verifica la política vigente y el tipo de compra.", "script": "You generally have 30 days to return an item. For an online order, the 30 days start when it is delivered. For a store purchase, they start on the day you buy it. Some exceptions may apply, so I can help you check your order."}, {"situation": "The customer asks when their refund will arrive.", "spanish": "La mayoría de los reembolsos se emiten al método de pago original. Si el crédito se devuelve a una tarjeta, el banco puede tardar hasta 10 días hábiles adicionales en reflejarlo después de que GAP procese el reembolso. Evita prometer una fecha exacta.", "script": "Most refunds go back to the original payment method. If you paid by credit card, it may take your bank up to 10 more business days to show the refund. I’m sorry, but I can’t promise an exact date."}, {"situation": "The customer asks whether return shipping is free.", "spanish": "Según la política de devoluciones por correo consultada, las devoluciones son gratis para miembros Encore; para no miembros se cobra $6 por paquete, descontado del reembolso. Los cambios por correo son gratuitos. Verifica el método de devolución y las condiciones vigentes antes de confirmar el cargo.", "script": "I can help you check the return options. The fee depends on the return method and the current policy. We’ll review the options shown on our website before you send the item back."}, {"situation": "The customer wants to return an item at a different brand's store.", "spanish": "Las devoluciones y cambios en tienda deben realizarse en la misma marca donde se compró el artículo. Por ejemplo, un artículo comprado en GAP no puede devolverse en Old Navy. Explica la regla con cortesía y orienta al cliente a una tienda de la marca correcta.", "script": "Returns must be made at the same brand where you bought the item. For example, an item bought at Gap must be returned to Gap, not Old Navy. I can help you find the correct store."}, {"situation": "The customer asks how to track an order.", "spanish": "Puede entrar en “Orders & Returns” e iniciar sesión para ver pedidos recientes, o consultar un pedido individual con el número de pedido y el correo electrónico. El seguimiento muestra detalles del pedido y los números de rastreo de los paquetes.", "script": "You can check your order on our website under “Orders & Returns.” Sign in to your account, or use your order number and email address. You’ll be able to see the order status and tracking details."}, {"situation": "The customer's order says “in process.” What does that mean?", "spanish": "“In process” significa que GAP está preparando el pedido. El pedido puede utilizar todo el plazo de envío previsto; GAP indica que ajustará el método de envío si es necesario para cumplir la fecha prometida. Cuando el pedido se envíe, se mandará un correo con la información de rastreo.", "script": "“In process” means we are preparing your order. It has not shipped yet. Once it ships, we’ll send you an email with tracking information. Your order may still take the full delivery time shown at checkout."}, {"situation": "The customer wants to change or cancel an order.", "spanish": "Dirige al cliente a la sección “Change or Cancel” o a “Orders & Returns” para comprobar si la orden todavía permite cambios o cancelación. No prometas que se puede modificar: la posibilidad depende del estado del pedido y de las opciones que muestre el sistema.", "script": "Let’s check whether your order can still be changed or canceled. Please go to “Orders & Returns” and open your order. If the option is available, follow the instructions on the screen. Some orders cannot be changed once processing has started."}, {"situation": "The customer says their order has not arrived by the promised date.", "spanish": "La página de seguimiento indica que, si el pedido no llega dentro del plazo de entrega indicado, el cliente debe contactar a GAP. Revisa el estado y el rastreo disponibles y sigue el procedimiento de atención correspondiente; no inventes una fecha nueva.", "script": "I’m sorry your order has not arrived yet. Let’s check the order status and tracking information together. If it is past the expected delivery time, please contact Gap Customer Service so we can review the next steps."}, {"situation": "The customer says an item is missing from the package.", "spanish": "La página de estado de pedidos indica que el cliente puede enviar un reclamo si falta algo. Revisa primero los detalles del pedido y el resumen de envío, ya que una orden puede llegar en varios paquetes en días distintos.", "script": "I’m sorry an item is missing. Sometimes an order arrives in more than one package. Let’s check your order details first. If the item is still missing, we can help you submit a claim."}, {"situation": "The customer asks why items from one order arrive on different days.", "spanish": "GAP puede dividir un pedido en varios paquetes que llegan en días distintos. El seguimiento muestra la información de cada paquete y los artículos incluidos. Según la página oficial, el cliente solo paga una vez aunque el pedido se divida en varios envíos.", "script": "Your order may arrive in separate packages, so the items can arrive on different days. You can check the tracking details for each package in your order information. You are charged once for the order, even if it ships in several packages."}, {"situation": "The customer asks how to use a gift card online.", "spanish": "Durante el pago, debe introducir el número de la tarjeta de regalo y su PIN de 4 dígitos en el campo “Add Gift Card/Store Credit”. La página de pagos indica que se pueden aplicar hasta cinco tarjetas de regalo por pedido.", "script": "You can use your gift card during checkout. Enter the gift card number and its four-digit PIN in the “Add Gift Card/Store Credit” section. You can use up to five gift cards on one order."}, {"situation": "The customer wants to use rewards points for a purchase.", "spanish": "El cliente debe iniciar sesión durante el pago, revisar “My Rewards”, elegir la cantidad de puntos o certificado válido y seleccionar “Redeem”. Las recompensas tienen restricciones: por ejemplo, no se pueden usar para comprar tarjetas de regalo ni para ciertos cargos, impuestos o gastos de envío.", "script": "To use your rewards, sign in before you check out. Open “My Rewards,” choose the reward you want to use, and select “Redeem.” Some charges, such as shipping or taxes, cannot be paid with rewards."}, {"situation": "The customer asks whether a gift card expires.", "spanish": "La página oficial de tarjetas de regalo indica que las tarjetas físicas y eGift Cards no caducan. No se puede añadir saldo a una tarjeta existente; para agregar valor, se debe comprar otra tarjeta.", "script": "Good news—Gap gift cards do not expire. You can use the remaining balance later. If you want to add more money, you’ll need to buy another gift card."}, {"situation": "The customer lost a physical gift card.", "spanish": "La página oficial indica que debe contactar al servicio de atención al cliente para obtener información sobre el reemplazo de una tarjeta física perdida o robada. No prometas que el saldo se transferirá sin que GAP confirme el caso.", "script": "I’m sorry you lost your gift card. Please contact Customer Service so we can explain what options may be available. We’ll need to review the details before we can confirm whether a replacement is possible."}, {"situation": "The customer asks whether a promotional discount transfers to a different style.", "spanish": "La política de reembolsos indica que, si el cliente cambia el artículo por el mismo estilo en otra talla o color, el descuento puede aplicarse al cambio. Si elige un estilo diferente, el descuento no se transfiere. Verifica los términos de la promoción específica.", "script": "If you exchange the item for the same style in a different size or color, the discount may still apply. If you choose a different style, the discount does not transfer. I can help you check the terms of your promotion."}, {"situation": "The customer asks how to place an online order.", "spanish": "El cliente añade al menos un artículo a la bolsa y pasa a “Checkout”. Allí selecciona envío y opciones de regalo, introduce el pago y las direcciones, y revisa el pedido antes de finalizar. Tras realizarlo, aparece una confirmación con número de pedido y se envía un correo de confirmación dentro de 24 horas, según la página consultada.", "script": "To place an order, add the items you want to your bag and select “Checkout.” Enter your shipping address and payment details, then review your order carefully. When you place the order, you’ll see a confirmation number and receive a confirmation email."}, {"situation": "The customer wants to know whether an item is eligible for return.", "spanish": "Pide o revisa los detalles del artículo y usa el proceso de devolución en línea para comprobar si aparece como elegible. Algunos artículos están excluidos o marcados “return by mail only”. Si el sistema no permite la devolución, la política recomienda revisar las preguntas frecuentes o contactar a Customer Care.", "script": "Let’s check whether the item can be returned. Most eligible items must be unworn and unwashed, and some items cannot be returned. We can review the item details and the return options on our website together."}, {"situation": "The customer asks about a price adjustment.", "spanish": "GAP tiene una sección “Price Adjustments” dentro de seguimiento/cambios de pedidos. Consulta los términos vigentes y los detalles de la compra antes de confirmar elegibilidad; no prometas un ajuste ni una cantidad sin verificar la política aplicable.", "script": "I can help you check whether your purchase qualifies for a price adjustment. The answer depends on the item, purchase date, and current policy. Let’s review your order details before I confirm anything."}, {"situation": "The customer needs help with a promo code.", "spanish": "Comprueba que el código se introduzca en el lugar indicado durante el pago y revisa sus términos, fecha de vigencia y exclusiones. La página de Customer Service incluye ayuda para códigos promocionales, pero la elegibilidad depende de las condiciones de cada oferta.", "script": "I can help you with your promo code. Please enter it in the promo code box during checkout and check the offer’s terms. Some codes have expiration dates or do not apply to certain items."}, {"situation": "The customer wants to update their account information.", "spanish": "La sección “Manage Your Account” permite gestionar información de cuenta, como datos de facturación o contraseña, y preferencias de correo. Sigue las opciones disponibles en la cuenta y no pidas al cliente que comparta su contraseña.", "script": "You can update your account information on our website. Open “Manage Your Account” and choose the information you want to change. For your security, please do not share your password with me."}, {"situation": "The customer asks how to contact GAP Customer Service.", "spanish": "La página oficial ofrece opciones de chat o llamada en “Contact Us”. Orienta al cliente a esa sección para utilizar los canales disponibles en ese momento.", "script": "You can reach Gap Customer Service by going to the “Contact Us” section on our website. There, you can see the available options to chat with us or call us. I’ll be happy to guide you."}, {"situation": "The customer wants to return an item bought through a third-party marketplace.", "spanish": "Los artículos comprados mediante marketplaces externos, como TikTok Shop o DoorDash, deben devolverse a través del mismo marketplace donde se realizó la compra. Sus plazos, requisitos y elegibilidad pueden ser distintos de los de GAP.com.", "script": "If you bought the item through another website or app, you usually need to start the return there. Open that website or app, find your order, and follow its return instructions. Its return rules may be different from Gap’s."}, {"situation": "The customer asks whether original shipping charges are refunded.", "spanish": "La política de devolución por correo indica que los cargos originales de envío y manejo no se reembolsan. Confirma el método de devolución y las condiciones aplicables antes de explicar el importe final.", "script": "The original shipping and handling charges are generally not refunded when you return an item. I can help you review the return details so you know what to expect in your refund."}, {"situation": "The customer paid with a credit card and returned an item.", "spanish": "Los reembolsos a tarjeta se devuelven a la misma tarjeta utilizada originalmente. Aunque GAP procese el reembolso, la entidad bancaria puede tardar hasta 10 días hábiles adicionales en reflejarlo.", "script": "If you paid by credit card, the refund will go back to the same card. After we process it, your bank may need up to 10 additional business days to show the money in your account."}, {"situation": "The customer asks whether items from different Gap Inc. brands can be returned together by mail.", "spanish": "La política indica que artículos de GAP, Old Navy, Banana Republic y Athleta pueden devolverse juntos en un paquete cuando forman parte del mismo pedido, sujetos a las exclusiones aplicables. Las devoluciones en tienda deben hacerse en la marca donde se compraron.", "script": "If the items from Gap, Old Navy, Banana Republic, or Athleta are from the same order, you may be able to return them together by mail. Some exclusions apply. In-store returns must still be made at the brand where each item was purchased."}, {"situation": "The customer asks what happens after GAP processes the return.", "spanish": "GAP envía un correo de confirmación cuando la devolución o el cambio se completa. El reembolso se realiza según la opción seleccionada y vuelve al método de pago original cuando corresponda; el banco puede necesitar tiempo adicional para reflejarlo.", "script": "After we finish processing your return, we’ll send you a confirmation email. Your refund will be sent according to the return method you selected. If it goes back to your credit card, your bank may need extra time to show it."}];
+const list = document.getElementById('list');
+const detail = document.getElementById('detail');
+const search = document.getElementById('search');
+const count = document.getElementById('count');
+let activeIndex = -1;
+
+function renderList() {
+  const q = search.value.trim().toLowerCase();
+  const filtered = cards.map((card, index) => ({card, index}))
+    .filter(({card}) => (card.situation + ' ' + card.spanish + ' ' + card.script).toLowerCase().includes(q));
+  list.innerHTML = '';
+  count.textContent = `${filtered.length} of ${cards.length} situations`;
+  if (!filtered.length) {
+    list.innerHTML = '<div class="empty">No matches. Try a shorter word, such as “refund” or “order”.</div>';
+    return;
+  }
+  filtered.forEach(({card, index}) => {
+    const button = document.createElement('button');
+    button.className = 'situation' + (index === activeIndex ? ' active' : '');
+    button.type = 'button';
+    button.innerHTML = `<span class="num">${String(index + 1).padStart(2, '0')}</span><span></span>`;
+    button.lastElementChild.textContent = card.situation;
+    button.setAttribute('aria-pressed', index === activeIndex ? 'true' : 'false');
+    button.addEventListener('click', () => {
+      activeIndex = index;
+      renderList();
+      renderDetail();
+    });
+    list.appendChild(button);
+  });
+}
+function renderDetail() {
+  if (activeIndex < 0) return;
+  const card = cards[activeIndex];
+  detail.innerHTML = '';
+  const title = document.createElement('h2');
+  title.textContent = card.situation;
+  detail.appendChild(title);
+
+  const spanishLabel = document.createElement('div');
+  spanishLabel.className = 'label spanish';
+  spanishLabel.textContent = 'Explicación en español';
+  detail.appendChild(spanishLabel);
+  const spanish = document.createElement('div');
+  spanish.className = 'explanation';
+  spanish.textContent = card.spanish;
+  detail.appendChild(spanish);
+
+  const scriptLabel = document.createElement('div');
+  scriptLabel.className = 'label script-label';
+  scriptLabel.textContent = 'What to say to the customer';
+  detail.appendChild(scriptLabel);
+  const script = document.createElement('div');
+  script.className = 'script-box';
+  script.textContent = '“' + card.script + '”';
+  detail.appendChild(script);
+
+  const actions = document.createElement('div');
+  actions.className = 'actions';
+  const copy = document.createElement('button');
+  copy.className = 'action-btn primary';
+  copy.type = 'button';
+  copy.textContent = 'Copy English response';
+  copy.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(card.script);
+      copy.textContent = 'Copied!';
+      setTimeout(() => copy.textContent = 'Copy English response', 1600);
+    } catch (e) {
+      const area = document.createElement('textarea');
+      area.value = card.script;
+      detail.appendChild(area);
+      area.select();
+      document.execCommand('copy');
+      area.remove();
+      copy.textContent = 'Copied!';
+      setTimeout(() => copy.textContent = 'Copy English response', 1600);
+    }
+  });
+  actions.appendChild(copy);
+  const print = document.createElement('button');
+  print.className = 'action-btn';
+  print.type = 'button';
+  print.textContent = 'Print';
+  print.addEventListener('click', () => window.print());
+  actions.appendChild(print);
+  detail.appendChild(actions);
+}
+search.addEventListener('input', renderList);
+document.getElementById('clear').addEventListener('click', () => {
+  search.value = '';
+  renderList();
+  search.focus();
+});
+renderList();
+</script>
+</body>
+</html>
