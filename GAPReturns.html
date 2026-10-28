@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GAP Returns Call Navigator</title>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef1f5;--card:#fff;--ink:#16202e;--mute:#5b6778;--line:#d6dce5;--acc:#1b3a6b;--accbg:#e3ebf8;--cust:#f1f3f6;--ph:#ffe9b0;--phi:#5a3d00;--ok:#1d6b45;--bad:#a12b2b;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f151e;--card:#18212d;--ink:#e8edf4;--mute:#9aa7b8;--line:#2b3747;--acc:#8fb4f2;--accbg:#1f2e47;--cust:#202b3a;--ph:#4a3a10;--phi:#ffd98a;--ok:#6fd1a0;--bad:#f09090}}
+:root[data-theme="dark"]{--bg:#0f151e;--card:#18212d;--ink:#e8edf4;--mute:#9aa7b8;--line:#2b3747;--acc:#8fb4f2;--accbg:#1f2e47;--cust:#202b3a;--ph:#4a3a10;--phi:#ffd98a;--ok:#6fd1a0;--bad:#f09090}
+:root{color-scheme:light dark}
+:root[data-theme="light"]{color-scheme:light}:root[data-theme="dark"]{color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--card);border-bottom:1px solid var(--line);padding:10px 14px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--card);z-index:10}
+h1{font-size:18px;margin:0 auto 0 0}
+header input{font:inherit;font-size:14px;padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);width:120px}
+#theme{font:inherit;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:6px;padding:6px 10px;cursor:pointer}
+.app{display:grid;grid-template-columns:330px 1fr;gap:16px;max-width:1200px;margin:0 auto;padding:14px}
+aside{align-self:start;position:sticky;top:calc(70px + env(safe-area-inset-top,0px));max-height:calc(100vh - 90px);overflow:auto}
+#q{width:100%;font:inherit;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);margin-bottom:10px}
+.grp{font-weight:700;font-size:14px;color:var(--mute);margin:14px 0 6px}
+.sc{display:block;width:100%;text-align:left;font:inherit;background:var(--card);color:var(--ink);border:1px solid var(--line);border-left:5px solid var(--g,var(--acc));border-radius:8px;padding:9px 11px;margin-bottom:6px;cursor:pointer}
+.sc:hover{background:var(--accbg)}
+.sc.on{background:var(--accbg);border-color:var(--acc);border-left-color:var(--g,var(--acc))}
+.sc b{display:block;font-size:15px}.sc small{color:var(--mute);font-size:13px;line-height:1.35;display:block}
+main{min-width:0}
+.back{display:none;font:inherit;background:none;border:0;color:var(--acc);padding:0 0 10px;cursor:pointer;font-weight:700}
+.empty{background:var(--card);border:1px dashed var(--line);border-radius:10px;padding:28px;color:var(--mute)}
+.top{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--g,var(--acc));border-radius:10px;padding:14px 16px;margin-bottom:12px}
+.top h2{margin:0 0 4px;font-size:21px}.top p{margin:0;color:var(--mute)}
+.jump{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.jump a{padding:5px 12px;border:1px solid var(--line);background:var(--card);border-radius:99px;color:var(--ink);text-decoration:none;font-size:14px}
+.jump a:hover{border-color:var(--acc)}
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:12px}
+summary{cursor:pointer;padding:11px 14px;font-weight:700;display:flex;gap:10px;align-items:center;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary .n{background:var(--acc);color:var(--card);width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:14px;flex:none}
+summary::after{content:"+";margin-left:auto;color:var(--mute);font-size:20px}
+details[open] summary::after{content:"\2212"}
+.body{padding:2px 14px 14px;max-width:760px}
+.ln{margin:8px 0;padding:8px 11px;border-radius:8px}
+.ln.a{background:var(--accbg);border-left:4px solid var(--acc)}
+.ln.c{background:var(--cust);margin-left:22px;border-left:4px solid var(--mute)}
+.ln.i{color:var(--mute);font-style:italic;padding:4px 11px;border-left:4px dotted var(--line)}
+.ln.b{margin:3px 0 3px 18px;padding:3px 8px;background:none;position:relative}
+.ln.b::before{content:"\2022";position:absolute;left:-10px}
+.who{font-weight:700;font-size:13px;display:block;color:var(--acc)}
+.c .who{color:var(--mute)}
+.tag{display:inline-block;font-weight:700;font-size:13px;padding:1px 8px;border-radius:99px;background:var(--card);border:1px solid var(--line);margin-right:6px}
+.ph{background:var(--ph);color:var(--phi);padding:0 4px;border-radius:4px}
+.fill{background:var(--card);color:var(--ink);border:1px solid var(--acc);padding:0 4px;border-radius:4px;font-weight:700}
+.body a,.top a{color:var(--acc);font-weight:700}
+.table{overflow-x:auto}
+table{border-collapse:collapse;font-size:14px;min-width:520px;width:100%}
+td,th{border:1px solid var(--line);padding:6px 9px;text-align:left}
+th{background:var(--accbg)}
+.dec{margin-top:16px}
+@media (max-width:820px){.app{grid-template-columns:1fr}aside{position:static;max-height:none}
+.app.detail aside{display:none}.app:not(.detail) main{display:none}.back{display:block}header input{width:calc(33% - 8px)}}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+</style>
+</head>
+<body>
+<header>
+<h1>GAP Returns Call Navigator</h1>
+<input id="ag" placeholder="Agent name" aria-label="Agent name">
+<input id="cu" placeholder="Customer name" aria-label="Customer name">
+<input id="it" placeholder="Item" aria-label="Item">
+<button id="theme" title="Toggle light/dark">Light/Dark</button>
+</header>
+<div class="app" id="app">
+<aside>
+<input id="q" type="search" placeholder="Search: late, gift, defective, Premier…" aria-label="Search scenarios">
+<div id="list"></div>
+<div class="grp">Window cheat sheet (from delivery date)</div>
+<div class="table"><table>
+<tr><th>Who</th><th>Window</th><th>Past 30 days</th></tr>
+<tr><td>Core / non-member</td><td>30 days</td><td>Decline</td></tr>
+<tr><td>Premier (signed in)</td><td>45 days</td><td>MRC</td></tr>
+<tr><td>All-Access (signed in)</td><td>60 days</td><td>MRC</td></tr>
+<tr><td>Order Oct 15–Dec 24</td><td>Jan 15 or 30 days</td><td>Not for 3rd-party</td></tr>
+<tr><td>Damaged / defective</td><td>Any time</td><td>Accept</td></tr>
+</table></div>
+</aside>
+<main id="main"></main>
+</div>
+<script>
+var G={s:{n:"Standard",c:"#1d6b45"},l:{n:"Late or special window",c:"#b27a00"},x:{n:"Cannot return",c:"#a12b2b"},o:{n:"Other situations",c:"#1b3a6b"}};
+var A=["a|Hello, thank you for calling GAP Customer Service. My name is [Agent name]. May I have your name, please?","c|[Name]","a|It’s a pleasure to meet you, [Name]! How can I help you today?","c|I want to make a return.","a|Understood, we want you to be happy with your purchase. Let me see if we can still make that return. Was it bought online or in a store?","c|Online."];
+var B=["a|I need to pull up your account in my system. May I have your billing name and billing address?","c|[Billing name and address]","a|Thank you for sharing that. Give me just a moment while I locate your account… Perfect, I have it right here. First, I want to thank you for being a [Core / Premier / All Access] loyalty member. We truly appreciate your loyalty! May I have your order number?","i|Check the delivery date. Check account notes and previous offenses. If anything is flagged, go to Script 14. If all is clear, apply the policy for the scenario."];
+var C=["a|Perfect! Here’s a quick recap: [item], [return method], [refund type and timing].","a|Also, you can track your [item] by downloading our GAP app, which sends you automatic updates, so you won’t even need to call us. You can also check your order status on our website. Is there anything else I can help you with today?","c|No, thanks.","a|It was my pleasure to help you today, [Name]. Thank you for being a GAP customer. Have a wonderful day!"];
+var S=[
+{id:1,g:"s",t:"Standard return, within 30 days",u:"Delivered 30 days ago or less, item unworn and unwashed, not final sale. Paid by credit card.",l:[
+"a|Thank you, [Name]. I see order [number] was delivered on [date], so you’re still within our 30-day return window. What item would you like to return, and what’s the reason?","c|[Item and reason]","a|I’m sorry that didn’t work out. Just to confirm, is the item unworn, unwashed and in its original condition?","c|Yes.","a|Great. Since the order was paid by credit card, your refund goes back to that same card. It includes the taxes you paid on the item. Your card company can take up to 10 additional business days to post it.","i|Open Optoro and create the return. Return shipping is free for Encore members; $6 for non-members (Script 12).","a|I’m sending the return instructions to your email now, [email]. You can use the QR code at a drop-off point or print the label. Would you like me to confirm the email address?"]},
+{id:2,g:"l",t:"Premier member, 31–45 days",u:"Premier member signed in online at purchase, delivered 31–45 days ago.",l:[
+"a|Thank you, [Name]. I see this order was delivered on [date], which is [X] days ago. The standard window is 30 days, but as a Premier member you can return up to 45 days after delivery. Let me set that up for you.","a|One thing to know: because the return is after the 30-day mark, you’ll receive a Merchandise Return Card instead of a refund to your original payment. It works like store credit. Is that okay?","c|Yes / No.","x|If yes|Perfect. I’ll send you the return label by email.","x|If no|I understand. Unfortunately a Merchandise Return Card is the only option after 30 days. If you’d rather not receive it, you won’t be able to return the item this time. Would you like to go ahead?","i|Late return: use UPS web for GAP to generate the label. If a Grow email is needed, send it so the customer gets a Happy Returns QR code or an emailed label.","i|In the recap, mention the Merchandise Return Card."]},
+{id:3,g:"l",t:"All-Access cardmember, 31–60 days",u:"All-Access cardmember signed in online at purchase, delivered 31–60 days ago.",l:[
+"a|Thank you, [Name]. Your order was delivered on [date], which is [X] days ago. As an All-Access cardmember you have up to 60 days from delivery to return items, so you’re covered.","a|Because the return is after 30 days, you’ll receive a Merchandise Return Card for the item’s value instead of a refund to your card. Does that work for you?","i|Same tools as Script 2: UPS web for GAP, or Grow email for a QR code or label.","i|If the order is beyond 60 days, go to Script 4."]},
+{id:5,g:"l",t:"Holiday extended return (Oct 15–Dec 24 orders)",u:"Order placed Oct 15–Dec 24 and the customer is calling after 30 days.",l:[
+"i|Confirm the order date, that the item was shipped and sold by GAP (not a third-party seller), and proof of purchase.","a|Thank you, [Name]. Because your order was placed on [date], it falls under our extended holiday return policy. You can return it through January 15, or 30 days from delivery, whichever is later. So you’re still within the window.","a|I’ll need proof of purchase, which I can see on your order. Let me set up the return for you.","i|Optoro for returns inside 30 days; UPS web for GAP for later ones.","x|Third-party seller item|I see this item was shipped and sold by a third-party seller, so the extended holiday window doesn’t apply. Their own return policy applies, and I can help you find it."]},
+{id:6,g:"l",t:"Damaged or defective item",u:"Item arrived damaged or stopped working properly. Accepted at any time.",l:[
+"a|I’m very sorry to hear that, [Name]. Can you tell me what’s wrong with the item?","c|[Description]","a|Thank you for letting me know. Damaged or defective items can be returned or exchanged at any time, so we can take care of this today. Would you prefer a refund or an exchange for the same item?","x|Exchange|Exchanges are free, and I’ll send you the instructions by email.","x|Refund|Your refund will go back to your original payment method.","i|Order older than 30 days: UPS web for GAP. Otherwise Optoro. Add a note about the defect to the account."]},
+{id:4,g:"x",t:"Outside the window, no exception",u:"Past 30 days (Core/non-member), 45 (Premier) or 60 (All-Access); not defective; no holiday extension.",l:[
+"a|Thank you, [Name]. I’ve reviewed order [number]. It was delivered on [date], which is [X] days ago. Our policy allows returns within [30 / 45 / 60] days of delivery for your membership level, so I’m not able to process this one as a standard return. I’m sorry, I know that’s not what you were hoping to hear.","a|Before I close this out, can I ask if there’s a problem with the item, such as damage or a defect? Those can be returned at any time.","x|If defective|Go to Script 6.","x|If not|I understand. A few options that may help: you could keep the item, gift it, or check whether another item on your order is still eligible. I’m also happy to look at your membership benefits so you know the return windows for future orders."]},
+{id:7,g:"x",t:"Final sale, Encore Market or mask",u:"Item marked Final Sale, bought in the Encore Market, or a mask.",l:[
+"a|Thank you, [Name]. I’ve checked order [number], and the [item] was purchased as a [final sale item / through the Encore Market / mask]. Those items can’t be returned, exchanged or refunded, whether by mail or in store. I’m sorry, I wish I had a different answer.","a|If the item arrived damaged or defective, I can help with that, since those are handled differently. Is that the case here?","x|If yes|Go to Script 6.","x|If no|Understood. Is there anything else on this order I can help with?"]},
+{id:15,g:"x",t:"Worn or washed item",u:"Customer says the item has been worn or washed.",l:[
+"a|Thank you for being honest with me, [Name]. Our policy requires items to be in their original condition, unworn and unwashed, so I can’t accept this return. I’m sorry.","a|If there’s a defect, such as stitching coming apart or fabric that failed after a first wash, those can be returned at any time. Is that the situation here?","x|If yes|Go to Script 6."]},
+{id:8,g:"o",t:"Gift return",u:"The customer received the item as a gift.",l:[
+"a|Gifts can absolutely be returned or exchanged. Do you have the order number, which is on the shipping invoice or confirmation email, and the email address where you’d like the refund sent?","x|With gift receipt or invoice|Perfect. Gifts returned with the gift receipt or invoice receive a gift card for the purchase price.","x|Without|No problem. Gifts returned without a gift receipt or invoice receive a merchandise certificate for the current selling price, which may be different from what was paid.","i|Confirm item condition (unworn, unwashed), then follow the standard tool steps."]},
+{id:9,g:"o",t:"Where can it be returned? (store vs mail)",u:"Customer asks where or how to return the item.",l:[
+"a|Let me check how this item can be returned. Online purchases can usually be returned in a GAP store or by mail, with a few exceptions:","b|“Mail only” items, swimwear and maternity: by mail only. Swimwear needs original price tags and hygienic liner intact.","b|GAP Beauty: in store only; opened or used items can’t be returned.","b|Sunglasses: new ones within 30 days of delivery with original receipt and tags. Defective ones any time.","b|Third-party seller items, external marketplace orders (TikTok Shop, DoorDash) and Shopify orders: can’t be returned in store.","b|Store purchases can’t be returned by mail.","b|A GAP item must go to a GAP store, not Old Navy or another brand.","a|Which option would you prefer for your [item]?"]},
+{id:10,g:"o",t:"Refund method questions",u:"Customer asks where the refund will go.",l:[
+"a|I see this order was paid with [payment method]. Here’s what happens:","b|Credit card: refund to that same card; the card company may take up to 10 more business days.","b|Gift card: refund to a new gift card.","b|Promo code or discount: exchange for the same style in another size or color; the discount can’t transfer to a different style.","b|Points: dollar value converted to points and credited in about 1–2 days. Closed account: not refunded.","b|PayPal, Apple Pay, Google Pay, Klarna, Afterpay: refunded through the payment partner to the original method.","b|Gift card plus credit card: refund goes to the gift card first, then the credit card.","a|Does that answer your question?"]},
+{id:11,g:"o",t:"External marketplace (TikTok Shop, DoorDash)",u:"Order was placed outside GAP’s own website.",l:[
+"a|Thank you, [Name]. I see this order was placed through [marketplace]. Returns for those orders have to go through the same marketplace, and their return timeframes and rules may differ from ours.","a|To start the return, log in to the [marketplace] app or website, go to your order history, select the item, and follow the instructions. I’m sorry I can’t process it directly from here. Is there anything else I can help you with?"]},
+{id:12,g:"o",t:"Non-member and the $6 shipping fee",u:"Not an Encore member and wants to return by mail.",l:[
+"a|One thing to mention, [Name]: return shipping is free for Encore members, but a $6 fee applies for non-members. Exchanges are free for everyone. Would you like to continue with the return, or would you prefer an exchange?","i|If interested in membership, explain sign-up per your internal materials (the policy attached doesn’t cover sign-up details)."]},
+{id:13,g:"o",t:"Exchange",u:"Customer wants a different size or color instead of a refund.",l:[
+"a|I’d be glad to help with an exchange. Exchanges are free. The item is returned first, and then a second transaction is the purchase of your new item. What size or color would you like instead?","c|[Size/color]","a|Let me check availability. [Available / Not available].","x|If unavailable|That one isn’t available right now. Would you like to choose another option, or return it for a refund instead?","i|Same window rules as returns. Apply the delivery-date check."]},
+{id:14,g:"o",t:"Account flag or previous offenses",u:"Account notes show prior return abuse, fraud flags or restrictions.",l:[
+"i|Do not mention the flag directly. Follow your team’s escalation process.","a|Thank you for your patience, [Name]. I need to review a few details on this order with my team to make sure I give you accurate information. May I place you on a brief hold?","i|After review:","a|Thank you for holding. [I’ve been able to approve this return / I’m not able to process this return on this account. Here is what I can offer instead.]","i|Stay neutral and polite. Do not accuse or speculate about the reason."]}
+];
+var $=function(i){return document.getElementById(i)};
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+function fmt(s){
+s=esc(s).replace(/Script (\d+)/g,'<a href="#s$1">Script $1</a>');
+return s.replace(/\[([^\]]+)\]/g,function(m,k){
+var v=({"Agent name":$("ag").value,"Name":$("cu").value,"item":$("it").value})[k];
+return v?'<span class="fill">'+esc(v)+'</span>':'<span class="ph">'+m+'</span>'})}
+function lines(arr){return arr.map(function(r){
+var p=r.split("|"),t=p[0];
+if(t=="a")return'<div class="ln a"><span class="who">Agent</span>'+fmt(p[1])+'</div>';
+if(t=="c")return'<div class="ln c"><span class="who">Customer</span>'+fmt(p[1])+'</div>';
+if(t=="i")return'<div class="ln i">'+fmt(p[1])+'</div>';
+if(t=="b")return'<div class="ln b">'+fmt(p[1])+'</div>';
+return'<div class="ln a"><span class="tag">'+esc(p[1])+'</span>'+fmt(p[2])+'</div>'}).join("")}
+function box(n,title,arr,open,id){return'<details id="'+id+'"'+(open?" open":"")+'><summary><span class="n">'+n+'</span>'+title+'</summary><div class="body">'+lines(arr)+'</div></details>'}
+var cur=null;
+function list(){
+var q=$("q").value.toLowerCase(),h="";
+Object.keys(G).forEach(function(k){
+var it=S.filter(function(s){return s.g==k&&(s.t+" "+s.u+" "+G[k].n).toLowerCase().indexOf(q)>-1});
+if(!it.length)return;
+h+='<div class="grp">'+G[k].n+'</div>';
+it.forEach(function(s){h+='<button class="sc'+(cur==s.id?" on":"")+'" style="--g:'+G[k].c+'" data-id="'+s.id+'"><b>'+s.id+'. '+s.t+'</b><small>'+s.u+'</small></button>'});
+});
+$("list").innerHTML=h||'<p class="grp">No match. Try another word.</p>'}
+function show(){
+var m=/^#s(\d+)$/.exec(location.hash),s=m&&S.filter(function(x){return x.id==m[1]})[0];
+cur=s?s.id:null;list();
+$("app").className="app"+(s?" detail":"");
+if(!s){$("main").innerHTML='<div class="empty"><b>Pick the scenario that matches the call.</b><br>You’ll get the full workflow: opening (A), verification (B), the scenario script, and closing (C). Type the agent name, customer name and item at the top to fill the script.</div>';return}
+$("main").innerHTML='<button class="back" id="bk">← All scenarios</button><div class="top" style="--g:'+G[s.g].c+'"><h2>Script '+s.id+': '+s.t+'</h2><p>'+s.u+'</p></div>'+
+'<div class="jump"><a href="#" data-j="dA">A Opening</a><a href="#" data-j="dB">B Verify</a><a href="#" data-j="dS">Scenario</a><a href="#" data-j="dC">C Close</a></div>'+
+box("A","Opening",A,true,"dA")+box("B","Account verification and checks",B,true,"dB")+box("3","Scenario script: "+s.t,s.l,true,"dS")+box("C","Closing",C,true,"dC");
+window.scrollTo(0,0)}
+document.addEventListener("click",function(e){
+var b=e.target.closest(".sc");if(b){location.hash="s"+b.dataset.id;return}
+if(e.target.id=="bk"){location.hash="";return}
+var j=e.target.closest("[data-j]");if(j){e.preventDefault();var d=$(j.dataset.j);d.open=true;d.scrollIntoView({behavior:"smooth",block:"start"})}});
+window.addEventListener("hashchange",show);
+$("q").addEventListener("input",list);
+["ag","cu","it"].forEach(function(i){$(i).addEventListener("input",function(){var o=[].map.call(document.querySelectorAll("details"),function(d){return d.open});show1(o)})});
+function show1(o){var y=window.scrollY;show();[].forEach.call(document.querySelectorAll("details"),function(d,i){d.open=o[i]});window.scrollTo(0,y)}
+$("theme").addEventListener("click",function(){var r=document.documentElement,d=r.dataset.theme?r.dataset.theme=="dark":matchMedia("(prefers-color-scheme:dark)").matches;r.dataset.theme=d?"light":"dark"});
+show();
+</script>
+</body>
+</html>
